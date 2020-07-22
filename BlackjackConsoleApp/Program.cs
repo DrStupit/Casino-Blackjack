@@ -11,7 +11,7 @@ namespace BlackjackConsoleApp
         static void Main(string[] args)
         {
             var playerHandValue = 0;
-            //var dealerHandValue = 0;
+            var dealerHandValue = 0;
 
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Red;
@@ -19,26 +19,47 @@ namespace BlackjackConsoleApp
             Console.Write(Helper.ShowHeaderDisplay());
             Console.ForegroundColor = ConsoleColor.Black;
             Console.Write(Helper.ShowGameInstructions());
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Blue;
 
             var deck = Helper.InitializeDeck();
             deck = Helper.ShuffleDeck(deck);
 
-            Console.Write("Take Another Card - 1\nStop - 2");
-            string userChoice = Console.ReadLine();
-            
-            while (playerHandValue <= 21)
+            Console.WriteLine("Press (P) start game\nPress (H) hit\nPress (S) to stop");
+            while (playerHandValue <= 21 || (dealerHandValue <= 17))
             {
-                var card = Helper.DealCard(deck);
-                playerHandValue += (int)card.Value;
-                Console.WriteLine("Player Dealt:");
-                Console.WriteLine(Enum.GetName(typeof(Value), card.Value) + " of " + Enum.GetName(typeof(Suit), card.Suit));
-                Console.WriteLine("Players Current Hand: " + playerHandValue);
-                userChoice = "";
-                if(playerHandValue > 21)
+                string userChoice = Console.ReadLine();
+
+                if (userChoice.ToLower().Equals("h"))
                 {
-                    Console.Write("Player lost");
+                    var card = Helper.DealCard(deck);
+                    playerHandValue += (int)card.Value;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(Helper.DisplayDealtCard(card, playerHandValue, "Player"));
+                    Console.ForegroundColor = ConsoleColor.Green;
                 }
+                
+                if (playerHandValue > 21)
+                {
+                    Console.WriteLine("-----------");
+                    Console.WriteLine("Dealer wins");
+                    Console.WriteLine("-----------");
+                }
+
+                if(userChoice.ToLower().Equals("s"))
+                {
+                    while(dealerHandValue <= 17 && dealerHandValue != 21)
+                    {
+                        var card = Helper.DealCard(deck);
+                        dealerHandValue += (int)card.Value;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine(Helper.DisplayDealtCard(card, dealerHandValue, "Dealer"));
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    }
+                    Console.WriteLine(Helper.GetWinner(playerHandValue, dealerHandValue));
+                }
+
+                Console.ForegroundColor = ConsoleColor.Black;
+
             }
             //ToDO:
             //For Some Pizaz.

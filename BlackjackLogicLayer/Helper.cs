@@ -104,5 +104,18 @@ namespace BlackjackLogicLayer
             sb.AppendLine("*********************************************************************************");
             return sb.ToString();
         }
+        public static string DisplayDealtCard(Card card, int playerHandValue, string user)
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine("==========================");
+            sb.AppendLine(user+" Dealt:");
+            sb.AppendLine("------------------");
+            sb.AppendLine(Enum.GetName(typeof(Value), card.Value) + " of " + Enum.GetName(typeof(Suit), card.Suit));
+            sb.AppendLine(user+" Current Hand: " + playerHandValue);
+            sb.AppendLine("==========================");
+
+            return sb.ToString();
+        }
+
     }
 }
