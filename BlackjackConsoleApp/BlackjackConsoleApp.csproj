@@ -3,7 +3,6 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Casino_Assesment_July2020</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Casino-Assesment-July2020", "Casino-Assesment-July2020\Casino-Assesment-July2020.csproj", "{C1850645-745E-44D9-A1B7-8B7BBCBCA486}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackjackLogicLayer", "BlackjackLogicLayer\BlackjackLogicLayer.csproj", "{B0FAE14B-3507-4274-809D-C03C9AD3B8E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackjackConsoleApp", "BlackjackConsoleApp\BlackjackConsoleApp.csproj", "{4A735CC1-0969-46F1-8A63-86C07E41CBC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C1850645-745E-44D9-A1B7-8B7BBCBCA486}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C1850645-745E-44D9-A1B7-8B7BBCBCA486}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C1850645-745E-44D9-A1B7-8B7BBCBCA486}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C1850645-745E-44D9-A1B7-8B7BBCBCA486}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0FAE14B-3507-4274-809D-C03C9AD3B8E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0FAE14B-3507-4274-809D-C03C9AD3B8E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0FAE14B-3507-4274-809D-C03C9AD3B8E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0FAE14B-3507-4274-809D-C03C9AD3B8E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A735CC1-0969-46F1-8A63-86C07E41CBC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A735CC1-0969-46F1-8A63-86C07E41CBC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A735CC1-0969-46F1-8A63-86C07E41CBC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A735CC1-0969-46F1-8A63-86C07E41CBC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
