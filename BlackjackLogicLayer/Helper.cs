@@ -63,9 +63,13 @@ namespace BlackjackLogicLayer
         /// <returns>String message to display winner</returns>
         public static string GetWinner(int player, int dealer)
         {
-            if(player > dealer)
+            if (player > dealer)
             {
                 return "Player Wins!";
+            }
+            else if (player == dealer)
+            {
+                return "Tie";
             }
             else
             {
@@ -108,10 +112,10 @@ namespace BlackjackLogicLayer
         {
             var sb = new StringBuilder();
             sb.AppendLine("==========================");
-            sb.AppendLine(user+" Dealt:");
+            sb.AppendLine(user + " Dealt:");
             sb.AppendLine("------------------");
             sb.AppendLine(Enum.GetName(typeof(Value), card.Value) + " of " + Enum.GetName(typeof(Suit), card.Suit));
-            sb.AppendLine(user+" Current Hand: " + playerHandValue);
+            sb.AppendLine(user + " Current Hand: " + playerHandValue);
             sb.AppendLine("==========================");
 
             return sb.ToString();
