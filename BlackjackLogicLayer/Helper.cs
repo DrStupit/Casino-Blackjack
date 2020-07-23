@@ -108,7 +108,10 @@ namespace BlackjackLogicLayer
             sb.AppendLine("================================");
             return sb.ToString();
         }
-
+        /// <summary>
+        /// Game Display for Instructions on Console
+        /// </summary>
+        /// <returns>String of Instructions</returns>
         public static string ShowGameInstructions()
         {
             var sb = new StringBuilder();
@@ -127,6 +130,13 @@ namespace BlackjackLogicLayer
             sb.AppendLine("*********************************************************************************");
             return sb.ToString();
         }
+        /// <summary>
+        /// Display Dealt card to Player & Dealer
+        /// </summary>
+        /// <param name="card"></param>
+        /// <param name="playerHandValue"></param>
+        /// <param name="user"></param>
+        /// <returns>Returns a string for dealt card</returns>
         public static string DisplayDealtCard(Card card, int playerHandValue, string user)
         {
             var suitImg = "";
@@ -158,7 +168,10 @@ namespace BlackjackLogicLayer
 
             return sb.ToString();
         }
-
+        /// <summary>
+        /// Run the game loop - To let user hit or surrender
+        /// </summary>
+        /// <param name="deck"></param>
         public static void Play(List<Card> deck)
         {
             var playerHandValue = 0;
