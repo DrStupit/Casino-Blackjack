@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace BlackjackLogicLayer
 {
@@ -61,19 +62,37 @@ namespace BlackjackLogicLayer
         /// <param name="player"></param>
         /// <param name="dealer"></param>
         /// <returns>String message to display winner</returns>
-        public static string GetWinner(int player, int dealer)
+        public static void GetWinner(int player, int dealer)
         {
-            if (player > dealer)
+            if (dealer > 21)
             {
-                return "Player Wins!";
+                Console.WriteLine("Dealer bust! - Player Wins!");
+                Console.ForegroundColor = ConsoleColor.Black;
             }
-            else if (player == dealer)
+
+            if (dealer == 21)
             {
-                return "Tie";
+                Console.WriteLine("Dealer Wins!");
+                Console.ForegroundColor = ConsoleColor.Black;
             }
+
             else
             {
-                return "Dealer Wins";
+                if (player > dealer)
+                {
+                    Console.WriteLine("Player Wins!");
+                    Console.ForegroundColor = ConsoleColor.Black;
+                }
+                else if (player == dealer)
+                {
+                    Console.WriteLine("Ended in a Tie!");
+                    Console.ForegroundColor = ConsoleColor.Black;
+                }
+                else
+                {
+                    Console.WriteLine("Dealer Wins!");
+                    Console.ForegroundColor = ConsoleColor.Black;
+                }
             }
         }
 
@@ -110,15 +129,82 @@ namespace BlackjackLogicLayer
         }
         public static string DisplayDealtCard(Card card, int playerHandValue, string user)
         {
+            var suitImg = "";
+
+            if (Enum.GetName(typeof(Suit), card.Suit).Equals("Hearts"))
+            {
+                suitImg = "♥";
+            }
+            else if (Enum.GetName(typeof(Suit), card.Suit).Equals("Spades"))
+            {
+                suitImg = "♠";
+            }
+            else if (Enum.GetName(typeof(Suit), card.Suit).Equals("Diamonds"))
+            {
+                suitImg = "♦";
+            }
+            else if (Enum.GetName(typeof(Suit), card.Suit).Equals("Clubs"))
+            {
+                suitImg = "♣";
+            }
+
             var sb = new StringBuilder();
             sb.AppendLine("==========================");
             sb.AppendLine(user + " Dealt:");
             sb.AppendLine("------------------");
-            sb.AppendLine(Enum.GetName(typeof(Value), card.Value) + " of " + Enum.GetName(typeof(Suit), card.Suit));
+            sb.AppendLine(Enum.GetName(typeof(Value), card.Value) + " of " + suitImg);
             sb.AppendLine(user + " Current Hand: " + playerHandValue);
             sb.AppendLine("==========================");
 
             return sb.ToString();
+        }
+
+        public static void Play(List<Card> deck)
+        {
+            var playerHandValue = 0;
+            var dealerHandValue = 0;
+            string playerChoice;
+
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("Press (H) hit\nPress (S) to stop");
+                playerChoice = Console.ReadLine().ToLower();
+                if (playerChoice.Equals("h"))
+                {
+                    var card = Helper.DealCard(deck);
+                    playerHandValue += (int)card.Value;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(Helper.DisplayDealtCard(card, playerHandValue, "Player"));
+                    Console.ForegroundColor = ConsoleColor.Green;
+                }
+                if (playerHandValue > 21)
+                {
+                    Console.WriteLine("Player Bust - Dealer Wins!");
+                    Console.ForegroundColor = ConsoleColor.Black;
+                }
+                if (playerHandValue == 21)
+                {
+                    Console.WriteLine("Player Wins!");
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                }
+            }
+            while (!playerChoice.Equals("s") && playerChoice.Equals("h") && (playerHandValue < 21));
+
+            if (playerChoice.Equals("s"))
+            {
+                while (dealerHandValue <= 17)
+                {
+                    var card = Helper.DealCard(deck);
+                    dealerHandValue += (int)card.Value;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(Helper.DisplayDealtCard(card, dealerHandValue, "Dealer"));
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Thread.Sleep(500);
+                }
+                GetWinner(playerHandValue, dealerHandValue);
+            }
         }
 
     }
