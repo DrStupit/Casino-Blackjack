@@ -88,7 +88,7 @@ namespace BlackjackLogicLayer
                     Console.WriteLine("Ended in a Tie!");
                     Console.ForegroundColor = ConsoleColor.Black;
                 }
-                else
+                else if(dealer > player)
                 {
                     Console.WriteLine("Dealer Wins!");
                     Console.ForegroundColor = ConsoleColor.Black;
@@ -160,7 +160,7 @@ namespace BlackjackLogicLayer
 
             var sb = new StringBuilder();
             sb.AppendLine("==========================");
-            sb.AppendLine(user + " Dealt:");
+            sb.AppendLine("Dealt to "+user);
             sb.AppendLine("------------------");
             sb.AppendLine(Enum.GetName(typeof(Value), card.Value) + " of " + suitImg);
             sb.AppendLine(user + " Current Hand: " + playerHandValue);
@@ -177,6 +177,12 @@ namespace BlackjackLogicLayer
             var playerHandValue = 0;
             var dealerHandValue = 0;
             string playerChoice;
+
+            var firstCard = Helper.DealCard(deck);
+            playerHandValue += (int)firstCard.Value;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(Helper.DisplayDealtCard(firstCard, playerHandValue, "Player"));
+            Console.ForegroundColor = ConsoleColor.Green;
 
             do
             {

@@ -11,7 +11,7 @@ namespace BlackjackConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.BackgroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Gray;
             Console.ForegroundColor = ConsoleColor.Red;
             Console.OutputEncoding = Encoding.UTF8;
             Console.Write(Helper.ShowHeaderDisplay());
