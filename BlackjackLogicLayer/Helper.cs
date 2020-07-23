@@ -174,6 +174,7 @@ namespace BlackjackLogicLayer
         /// <param name="deck"></param>
         public static void Play(List<Card> deck)
         {
+            Console.BackgroundColor = ConsoleColor.Gray;
             var playerHandValue = 0;
             var dealerHandValue = 0;
             string playerChoice;
