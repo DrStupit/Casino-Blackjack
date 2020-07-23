@@ -88,7 +88,7 @@ namespace BlackjackLogicLayer
                     Console.WriteLine("Ended in a Tie!");
                     Console.ForegroundColor = ConsoleColor.Black;
                 }
-                else if(dealer > player)
+                else if(dealer > player && dealer < 21)
                 {
                     Console.WriteLine("Dealer Wins!");
                     Console.ForegroundColor = ConsoleColor.Black;
