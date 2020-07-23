@@ -219,7 +219,7 @@ namespace BlackjackLogicLayer
                     var card = Helper.DealCard(deck);
                     dealerHandValue += (int)card.Value;
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(Helper.DisplayDealtCard(card, dealerHandValue, "Dealer"));
+                    Console.WriteLine(Helper.DisplayDealtCard(card, dealerHandValue, "Dealers"));
                     Console.ForegroundColor = ConsoleColor.Green;
                     Thread.Sleep(500);
                 }
